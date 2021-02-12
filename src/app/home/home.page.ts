@@ -1,3 +1,4 @@
+import { YelpService } from './../services/yelp.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private yelpService: YelpService) {}
 
 }
