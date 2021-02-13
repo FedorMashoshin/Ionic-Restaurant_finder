@@ -7,5 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <ion-button (click)="test()" [disabled]="!showNearbyRestaurants">TEST</ion-button>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of nearbyRestaurants">
+      <h4>{{ item.name }}</h4>
+      <div>
+        <img [src]="item.image_url" alt="">
+      </div>
+    </ion-slide>
+  </ion-slides>
+ <!-- <ion-button (click)="test()" [disabled]="!showNearbyRestaurants">TEST</ion-button> -->
 </ion-content>
