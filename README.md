@@ -1,1 +1,2 @@
-# Ionic-Restaurant_finder
+# 🥗 Mobile Restaurant Finder App 
+### Built with [Ionic framework](https://ionicframework.com/)
