@@ -9,13 +9,12 @@ const URL = 'https://api.yelp.com/v3'
   providedIn: 'root'
 })
 export class YelpService {
+  restaurants: any;
 
   constructor(
     private http: HttpClient) {
   }
   getCurrentPosition(lat, long){
-    return this.http.get(`${CORS}/${URL}/businesses/search?latitude=${lat}&longitude=${long}`).subscribe(res => {
-      console.log('YELP RESULT: ', res)
-    });
+    return this.http.get(`${CORS}/${URL}/businesses/search?latitude=${lat}&longitude=${long}`);
   }
 }

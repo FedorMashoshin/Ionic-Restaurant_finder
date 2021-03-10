@@ -13,6 +13,14 @@ export class HomePage implements OnInit {
   longitude: string = null;
 
   showNearbyRestaurants: boolean = false;
+  restaurants: any;
+  nearbyRestaurants: any;
+
+  slideOpts = {
+    initialSlide: 1,
+    slidesPerView: 1,
+    speed: 600
+  };
 
   constructor(
     private yelpService: YelpService,
@@ -25,12 +33,13 @@ export class HomePage implements OnInit {
       this.latitude = this.geo.coords.latitude;
       this.longitude = this.geo.coords.longitude;
 
-      if (this.latitude && this.longitude) this.showNearbyRestaurants = true;
+      if (this.latitude && this.longitude) {
+        this.yelpService.getCurrentPosition(this.latitude, this.longitude).subscribe(res => {
+          this.restaurants = res;
+          this.nearbyRestaurants = this.restaurants.businesses;
+          console.log('RESTAURANTS:', this.nearbyRestaurants)
+        })
+      };
       });
   }
-
-  test(){
-    this.yelpService.getCurrentPosition(this.latitude, this.longitude);
-  }
-
 }
