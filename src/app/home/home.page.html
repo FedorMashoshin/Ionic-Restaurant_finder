@@ -1,19 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Blanks
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides  pager="true" [options]="slideOpts" autoplay="400" loop="true" speed="3000">
     <ion-slide *ngFor="let item of nearbyRestaurants">
-      <h4>{{ item.name }}</h4>
-      <div>
+ <div>
+        <h4>{{ item.name }}</h4>
         <img [src]="item.image_url" alt="">
+        <p class="tr">{{ item.rating }}<ion-icon name="star"></ion-icon></p>
+        <p class="price">{{ item.price }}</p>
       </div>
+      <p class="first">
+        <ion-icon name="globe"></ion-icon>  {{ item.categories[0].title }}
+      </p>
+
+
+
+      <p>
+        <ion-icon name="information-circle"></ion-icon>
+
+        <span *ngIf="item.is_closed"> Closed </span>
+        <span *ngIf="!item.is_closed"> Open </span>
+        &nbsp;&bull;&nbsp;
+        {{ item.display_phone }}</p>
+        <p>
+          <ion-icon name="compass"></ion-icon>
+          {{ item.location.address1 }} &nbsp;&bull;&nbsp;
+          <span *ngIf="item.distance > 1000">{{ (item.distance / 1000) | number:"1.1-1" }} km.</span>
+        <span *ngIf="item.distance < 1000">{{ item.distance | number:"1.0-0" }} m.</span>
+        </p>
+
+
     </ion-slide>
   </ion-slides>
- <!-- <ion-button (click)="test()" [disabled]="!showNearbyRestaurants">TEST</ion-button> -->
+ <ion-button (click)="test()" [disabled]="!showNearbyRestaurants">TEST</ion-button>
 </ion-content>

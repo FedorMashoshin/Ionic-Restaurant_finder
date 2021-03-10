@@ -18,7 +18,8 @@ export class HomePage implements OnInit {
 
   slideOpts = {
     initialSlide: 1,
-    speed: 400
+    slidesPerView: 1,
+    speed: 600
   };
 
   constructor(
